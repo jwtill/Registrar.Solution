@@ -29,5 +29,13 @@ namespace Registrar.Models
     _db.SaveChanges();
     return RedirectToAction("Index");
   }
+  public ActionResult Details(int id)
+  {
+    var thisCourse = _db.Courses
+      .Include(course => course.JoinEntities)
+      .ThenInclude(join => join.Student)
+      .FirstOrDefault(course => course.CourseId == id);
+    return View(thisCourse);
+  }
   }
 }
