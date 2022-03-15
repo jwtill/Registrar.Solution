@@ -16,11 +16,12 @@ namespace Registrar.Controllers
     }
     public ActionResult Index()
     {
-      return View(_db.Students.ToList());
+      return View(_db.Students.OrderBy(student => student.Date).ToList());
     }
     public ActionResult Create()
     {
       ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "Name");
+      ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "Name");
       return View();
     }
     [HttpPost]

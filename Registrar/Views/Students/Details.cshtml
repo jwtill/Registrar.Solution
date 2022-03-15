@@ -21,6 +21,13 @@ else
       <li>@join.Course.Name @join.Course.Number</li>
     }
   </ul>
+  <h4>Departments the student is in</h4>
+  <ul>
+    @foreach (var join in Model.JoinEntitiesStudentDepartment)
+    {
+      <li>@join.Department.Name @join.Department.Name</li>
+    }
+  </ul>
 }
 <p>@Html.ActionLink("Add new course", "Create")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
